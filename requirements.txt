@@ -1,4 +1,6 @@
 mypy==1.0.1
+numpy
 pdftotext
 pre-commit
 pylint==2.16.4
+tiktoken
