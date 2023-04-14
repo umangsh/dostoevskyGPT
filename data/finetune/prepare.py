@@ -1,27 +1,27 @@
 """Prepare training and validation data splits for finetuning GPT-2 with
 Dostoevsky's works."""
-import numpy as np
+import numpy
 import tiktoken
 
 
 def prepare_dataset(input_file: str, train_file: str, validation_file: str) -> None:
     """Process the dataset available at input_file path."""
     with open(input_file, encoding="utf-8") as file:
-        data = file.read()
-
-    train_data = data[: int(len(data) * 0.9)]
-    val_data = data[int(len(data) * 0.9) :]
+        content = file.read()
 
     # encode with tiktoken gpt2 bpe
     enc = tiktoken.get_encoding("gpt2")
+
+    train_data = content[: int(len(content) * 0.9)]
     train_ids = enc.encode_ordinary(train_data)
+    numpy.array(train_ids, dtype=numpy.uint16).tofile(train_file)
+
+    val_data = content[int(len(content) * 0.9) :]
     val_ids = enc.encode_ordinary(val_data)
+    numpy.array(val_ids, dtype=numpy.uint16).tofile(validation_file)
+
     print(f"train has {len(train_ids):,} tokens")  # noqa: T201
     print(f"val has {len(val_ids):,} tokens")  # noqa: T201
-
-    # export to files
-    np.array(train_ids, dtype=np.uint16).tofile(train_file)
-    np.array(val_ids, dtype=np.uint16).tofile(validation_file)
 
 
 def main():
