@@ -4,3 +4,5 @@ pdftotext
 pre-commit
 pylint==2.16.4
 tiktoken
+torch
+transformers

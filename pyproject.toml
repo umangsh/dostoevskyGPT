@@ -7,7 +7,7 @@ profile = "black"
 multi_line_output = 3
 line_length = 119
 default_section = "THIRDPARTY"
-known_third_party = ["numpy", "tiktoken"]
+known_third_party = ["numpy", "tiktoken", "torch", "transformers"]
 skip = ["__init__.py"]
 
 [tool.pylint.MASTER]
