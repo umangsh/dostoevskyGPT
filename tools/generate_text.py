@@ -27,7 +27,7 @@ def merge_files(input_directory: str, output_file: str) -> None:
         file.write(merged_contents)
 
 
-def main():
+def main() -> None:
     """Main method."""
     # Set input directory and output file paths
     input_directory = "/Users/umang/Desktop/github/dostoevskyGPT/books_txt"

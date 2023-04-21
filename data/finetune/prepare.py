@@ -24,7 +24,7 @@ def prepare_dataset(input_file: str, train_file: str, validation_file: str) -> N
     print(f"val has {len(val_ids):,} tokens")  # noqa: T201
 
 
-def main():
+def main() -> None:
     """Main method."""
     input_file = "/Users/umang/Desktop/github/dostoevskyGPT/data/dataset.txt"
     train_file = "/Users/umang/Desktop/github/dostoevskyGPT/data/finetune/train.bin"
