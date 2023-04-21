@@ -1,3 +1,6 @@
+[tool.bandit]
+skips = ["B101", "B301", "B403"]
+
 [tool.black]
 line-length = 119
 include = '\.pyi?$'

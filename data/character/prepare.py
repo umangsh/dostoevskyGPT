@@ -7,12 +7,10 @@ import numpy
 
 def encode(string: str, int_map: dict) -> list[int]:
     """Encode a string into a list of integers."""
-    return [int_map[c] for c in string]
+    return [int_map.get(c, int_map[" "]) for c in string]
 
 
-def prepare_dataset(  # pylint: disable=too-many-locals
-    input_file: str, train_file: str, validation_file: str, meta_file: str
-) -> None:
+def prepare_dataset(input_file: str, train_file: str, validation_file: str, meta_file: str) -> None:
     """Process the dataset available at input_file path."""
     with open(input_file, encoding="utf-8") as file:
         content = file.read()
@@ -20,6 +18,7 @@ def prepare_dataset(  # pylint: disable=too-many-locals
 
     # get all the unique characters that occur in this text
     chars = sorted(set(content))
+    chars = [c for c in chars if c.isascii()]
     vocab_size = len(chars)
     print("all the unique characters:", "".join(chars))  # noqa: T201
     print(f"vocab size: {vocab_size:,}")  # noqa: T201
